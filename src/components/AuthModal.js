@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { X, Heart } from "lucide-react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithGoogle } from "../firebase/auth";
 
 const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
   const [mode, setMode] = useState(initialMode);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,12 +19,14 @@ const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
     if (mode === "login") {
         try{
             await signInWithEmailAndPassword(formData.email, formData.password);
+            alert("Login successful!");
+             navigate('/prediction');
             onClose();
         }catch(error){
             alert("Error logging in: " + error.message);
         }
         
-      alert("Login functionality would be implemented here");
+      
     } else {
       if (formData.password !== formData.confirmPassword) {
         alert("Passwords do not match!");
@@ -34,7 +38,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
       }catch(error){
         alert("Error signing up: " + error.message);
       }
-      alert("Sign up functionality would be implemented here");
+     
     }
   };
 

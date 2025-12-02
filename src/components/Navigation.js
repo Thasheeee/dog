@@ -12,11 +12,12 @@ const Navigation = ({ onLoginClick }) => {
             <Heart className="h-8 w-8 text-blue-600" />
             <span className="ml-2 text-xl font-bold text-gray-800">Pal for Paw</span>
           </div>
-
+          
           <div className="hidden md:flex space-x-8">
             <a href="#home" className="text-gray-700 hover:text-blue-600 transition">Home</a>
             <a href="#features" className="text-gray-700 hover:text-blue-600 transition">Features</a>
-            <a href="#how-it-works" className="text-gray-700 hover:text-blue-600 transition">How It Works</a>
+            <a href="#book-appointment" className="text-gray-700 hover:text-blue-600 transition">Book Appointment</a>
+            <a href="#browse-adoptions" className="text-gray-700 hover:text-blue-600 transition">Adoptions</a>
             <a href="#about" className="text-gray-700 hover:text-blue-600 transition">About</a>
             <a href="#contact" className="text-gray-700 hover:text-blue-600 transition">Contact</a>
           </div>
@@ -41,7 +42,8 @@ const Navigation = ({ onLoginClick }) => {
           <div className="md:hidden pb-4">
             <a href="#home" className="block py-2 text-gray-700 hover:text-blue-600">Home</a>
             <a href="#features" className="block py-2 text-gray-700 hover:text-blue-600">Features</a>
-            <a href="#how-it-works" className="block py-2 text-gray-700 hover:text-blue-600">How It Works</a>
+            <a href="#book-appointment" className="block py-2 text-gray-700 hover:text-blue-600">Book Appointment</a>
+            <a href="#browse-adoptions" className="block py-2 text-gray-700 hover:text-blue-600">Adoptions</a>
             <a href="#about" className="block py-2 text-gray-700 hover:text-blue-600">About</a>
             <a href="#contact" className="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
             <button 
@@ -56,5 +58,6 @@ const Navigation = ({ onLoginClick }) => {
     </nav>
   );
 };
+
 
 export default Navigation;

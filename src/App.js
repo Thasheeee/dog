@@ -7,6 +7,8 @@ import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import AuthModal from "./components/AuthModal";
 import LearnMoreSection from "./components/LearnMoreSection";
+import BookAppointmentSection from "./components/BookAppointmentSection";
+import BrowseAdoptionsSection from "./components/BrowseAdoptionSection";
 import { useState } from "react";
 
 const App = () => {
@@ -32,7 +34,11 @@ const App = () => {
         onGetStarted={handleGetStarted}
         onLearnMore={handleLearnMore}
       />{" "}
-      <FeaturesSection /> <HowItWorksSection /> <AboutSection />{" "}
+      <FeaturesSection /> 
+       <BookAppointmentSection />
+      <BrowseAdoptionsSection />
+      <HowItWorksSection />
+       <AboutSection />{" "}
       <ContactSection /> <Footer />{" "}
       <AuthModal
         isOpen={isAuthModalOpen}
@@ -47,3 +53,5 @@ const App = () => {
   );
 };
 export default App;
+
+
