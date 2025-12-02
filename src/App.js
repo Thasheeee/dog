@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import Navigation from "./components/Navigation";
+import HeroSection from "./components/HeroSection";
+import FeaturesSection from "./components/FeaturesSection";
+import HowItWorksSection from "./components/HowItWorksSection";
+import AboutSection from "./components/AboutSection";
+import ContactSection from "./components/ContactSection";
+import Footer from "./components/Footer";
+import AuthModal from "./components/AuthModal";
+import LearnMoreSection from "./components/LearnMoreSection";
+import { useState } from "react";
 
-function App() {
+const App = () => {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState("login");
+  const [isLearnMoreOpen, setIsLearnMoreOpen] = useState(false);
+  const handleLoginClick = () => {
+    setAuthMode("login");
+    setIsAuthModalOpen(true);
+  };
+  const handleGetStarted = () => {
+    setAuthMode("signup");
+    setIsAuthModalOpen(true);
+  };
+  const handleLearnMore = () => {
+    setIsLearnMoreOpen(true);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen">
+      {" "}
+      <Navigation onLoginClick={handleLoginClick} />{" "}
+      <HeroSection
+        onGetStarted={handleGetStarted}
+        onLearnMore={handleLearnMore}
+      />{" "}
+      <FeaturesSection /> <HowItWorksSection /> <AboutSection />{" "}
+      <ContactSection /> <Footer />{" "}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        initialMode={authMode}
+      />{" "}
+      <LearnMoreSection
+        isOpen={isLearnMoreOpen}
+        onClose={() => setIsLearnMoreOpen(false)}
+      />{" "}
     </div>
   );
-}
-
+};
 export default App;
