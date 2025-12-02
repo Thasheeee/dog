@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, Heart } from "lucide-react";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithGoogle } from "../firebase/auth";
 
 const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
   const [mode, setMode] = useState(initialMode);
@@ -12,13 +13,26 @@ const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
 
   if (!isOpen) return null;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (mode === "login") {
+        try{
+            await signInWithEmailAndPassword(formData.email, formData.password);
+            onClose();
+        }catch(error){
+            alert("Error logging in: " + error.message);
+        }
+        
       alert("Login functionality would be implemented here");
     } else {
       if (formData.password !== formData.confirmPassword) {
         alert("Passwords do not match!");
         return;
+      }
+      try{
+        await createUserWithEmailAndPassword(formData.email, formData.password);
+        onClose();
+      }catch(error){
+        alert("Error signing up: " + error.message);
       }
       alert("Sign up functionality would be implemented here");
     }
@@ -130,6 +144,18 @@ const AuthModal = ({ isOpen, onClose, initialMode = "login" }) => {
             {" "}
             {mode === "login" ? "Login" : "Create Account"}{" "}
           </button>{" "}
+
+          <button
+           onClick={async () => {
+            try{
+                await signInWithGoogle();
+                onClose();
+            }catch(error){
+                alert(error.message);
+            }
+           }}
+            className="w-full mt-3 border border-gray-300 py-2 rounded-lg hover:bg-gray-50 flex items-center justify-center gap-2"
+            >Sign in with Google</button>
         </div>{" "}
         {mode === "login" && (
           <p className="text-center mt-4 text-gray-600">
