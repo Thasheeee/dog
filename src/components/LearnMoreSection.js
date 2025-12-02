@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 const LearnMoreSection = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 p-4 overflow-y-auto pt-24">
       {" "}
       <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full my-8 relative">
         {" "}
